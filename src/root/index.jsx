@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Research Demo</h1>
+        <h1>Research Demo - In React</h1>
         <h2>Hello {this.props.username}</h2>
         <button onClick={this.props.loadInitialData.bind(this, this.props.username)}>Load</button>
         <FeatureList/>
