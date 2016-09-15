@@ -1,13 +1,13 @@
 import { Map, List } from 'immutable';
 import { combineReducers } from 'redux';
-import {LOAD_INITIAL_DATA, SELECT_FEATURE} from './actions'
+import {LOAD_INITIAL_DATA, SELECT_FEATURE, SHOW_SELECTED} from './actions'
 import UUID from 'react-native-UUID'
 
 const initialState = Map({
   username: 'Matt',
   features: List(),
   products: List(),
-  selectedFeatures: List()
+  showselectedfeatures: false
 });
 
 export function root(state = initialState, action) {
@@ -26,10 +26,10 @@ export function root(state = initialState, action) {
           .get('features')
           .map((f)=> f.id == action.id 
             ? {id: f.id, text:f.text, selected:!f.selected}
-            : f))           
-        .set('selectedFeatures', state
-            .get('selectedFeatures')
-            .push({id: action.id}))
+            : f));
+    case SHOW_SELECTED:
+      return state   
+        .set('showselectedfeatures', !state.get('showselectedfeatures'));
     default:
       return state;
   }

@@ -3,8 +3,16 @@ import React from 'react';
 import { onFeatureSelected, onShowSelected} from '../actions'
 import FeatureItem from '../feature-item'
 
+const getVisibleFeatures = (features, showselectedfeatures) =>{
+    return showselectedfeatures 
+    ? features.filter(f=> f.selected === true)
+    : features;
+}  
+
 function mapStateToProps(state) {
-  return { features: state.get('features')};
+  var showselectedfeatures = state.get('showselectedfeatures');
+  var features = state.get('features');
+  return { features: getVisibleFeatures(features, showselectedfeatures)};
 }
 
 function mapDispatchToProps(dispatch) {
