@@ -4,6 +4,8 @@ import { loadInitialData} from '../actions'
 import FeatureList from '../feature-list'
 import ProductList from '../product-list'
 
+var css = require('../main.styl');
+
 function mapStateToProps(state){
   return { 
     username:state.get('username'), features: state.get('features')}
@@ -11,7 +13,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    loadInitialData: (username) => dispatch(loadInitialData()),
+    loadInitialData: () => dispatch(loadInitialData()),
   }
 }
 
@@ -21,7 +23,7 @@ class App extends React.Component {
       <div>
         <h1>Research Demo - Using React and Redux</h1>
         <h2>Hello {this.props.username}</h2>
-        <button onClick={this.props.loadInitialData.bind(this, this.props.username)}>Load</button>
+        <button onClick={this.props.loadInitialData.bind(this)}>Load</button>
         <FeatureList/>
         <ProductList/>
       </div>
