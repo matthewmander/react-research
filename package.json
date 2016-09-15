@@ -28,7 +28,7 @@
     "redux-devtools": "^2.1.5",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^1.0.3",
-    "reselect": "^2.5.1",
+    "reselect": "^2.5.3",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.1.2",
