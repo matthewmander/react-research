@@ -2,24 +2,9 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { onFeatureSelected, onShowSelected} from '../actions'
 import FeatureItem from '../feature-item'
-import {createSelector} from 'reselect'
-
-
-const getFeatures = (state) => state.get('features');
-const getShowSelectedFilter = (state) => state.get('showselectedfeatures');
-
-const getVisibleFeatures = createSelector(
-    [getFeatures,getShowSelectedFilter],
-    (features, showselectedfeatures) =>{
-        return showselectedfeatures 
-        ? features.filter(f=> f.selected === true)
-        : features;
-    }   
-)
+import { getVisibleFeatures } from '../selectors'
 
 function mapStateToProps(state) {
-  var showselectedfeatures = state.get('showselectedfeatures');
-  var features = state.get('features');
   return { features: getVisibleFeatures(state)};
 }
 
