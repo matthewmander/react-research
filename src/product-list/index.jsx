@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
 class ProductList extends React.Component {
   render() {
     var products = this.props.products.map(({text, id}) => (
-        <ProductItem text={text} id={id}/>
+        <li key={id}><ProductItem text={text} id={id}/></li>
     ));
     return (
       <div>
