@@ -5,7 +5,10 @@ import FeatureItem from '../feature-item'
 import { getVisibleFeatures } from '../selectors'
 
 function mapStateToProps(state) {
-  return { features: getVisibleFeatures(state)};
+  return { 
+    features: getVisibleFeatures(state),
+    showSelectedFeatures: state.get('showselectedfeatures')
+    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -17,6 +20,7 @@ function mapDispatchToProps(dispatch) {
 
 class FeatureList extends React.Component {
   render() {
+    var buttonClass = this.props.showSelectedFeatures ? 'selected': '';
     var features = this.props.features.map(({text,id, selected})=>(
         <li key={id}><FeatureItem 
           text={text} 
@@ -26,9 +30,9 @@ class FeatureList extends React.Component {
         </li>
     ));
     return (
-      <div>
+      <div className='featureList'>
       <h3>Feature list will appear below</h3>
-      <button onClick={this.props.onShowSelected}>Show selected only</button>
+      <button onClick={this.props.onShowSelected} className={buttonClass}>Show selected only</button>
       <ul>{features}</ul>
       </div>
     );
