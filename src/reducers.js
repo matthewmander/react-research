@@ -1,17 +1,28 @@
-import { Map, List } from 'immutable';
+import Immutable from 'immutable';
 import { combineReducers } from 'redux';
-import {LOAD_INITIAL_DATA, SELECT_FEATURE, SHOW_SELECTED} from './actions'
+import {LOAD_INITIAL_DATA, SELECT_FEATURE, SHOW_SELECTED , LOAD_FROM_STORED_STATE, RESET_STATE} from './actions'
 import UUID from 'react-native-UUID'
 
-const initialState = Map({
+const initialState = Immutable.Map({
   username: 'Matt',
-  features: List(),
-  products: List(),
+  features: Immutable.List(),
+  products: Immutable.List(),
   showselectedfeatures: false
+});
+
+const buildImmutableState = (state) => Immutable.Map({
+  username: state.username,
+  features: Immutable.List(state.features),
+  products: Immutable.List(state.products),
+  showselectedfeatures: state.showselectedfeatures
 });
 
 export function root(state = initialState, action) {
   switch (action.type) {
+    case RESET_STATE:
+      return initialState;
+    case LOAD_FROM_STORED_STATE:
+      return action.newState == null ? state : buildImmutableState(action.newState);
     case LOAD_INITIAL_DATA:
         return state
           .set('features', state

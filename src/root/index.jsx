@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadInitialData} from '../actions'
+import { loadInitialData, resetState } from '../actions'
 import FeatureList from '../feature-list'
 import ProductList from '../product-list'
+import '../main.styl'
 
-var css = require('../main.styl');
 
 function mapStateToProps(state){
   return { 
@@ -14,6 +14,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     loadInitialData: () => dispatch(loadInitialData()),
+    resetState: ()=> dispatch(resetState())
   }
 }
 
@@ -23,7 +24,8 @@ class App extends React.Component {
       <div>
         <h1>Research Demo - Using React and Redux</h1>
         <h2>Hello {this.props.username}</h2>
-        <button onClick={this.props.loadInitialData.bind(this)}>Load</button>
+        <button onClick={this.props.loadInitialData.bind(this)}>Add Dummy Feature</button>
+        <button onClick={this.props.resetState.bind(this)}>Reset</button>
         <FeatureList/>
         <ProductList/>
       </div>
