@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { onFeatureSelected, onShowSelected} from '../actions'
+import { onFeatureSelected, onShowSelected, addDummyFeature } from '../actions'
 import FeatureItem from '../feature-item'
 import { getVisibleFeatures } from '../selectors'
 
@@ -14,6 +14,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return { 
     onFeatureSelected: (id) => dispatch(onFeatureSelected(id)),
+    addDummyFeature: () => dispatch(addDummyFeature()),
     onShowSelected: () => dispatch(onShowSelected())
   };
 }
@@ -32,6 +33,7 @@ class FeatureList extends React.Component {
     return (
       <div className='featureList'>
       <h3>Feature list will appear below</h3>
+      <button onClick={this.props.addDummyFeature.bind(this)}>Add Dummy Feature</button>
       <button onClick={this.props.onShowSelected} className={buttonClass}>Show selected only</button>
       <ul>{features}</ul>
       </div>
