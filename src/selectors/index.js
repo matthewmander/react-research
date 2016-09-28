@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect'
 
-const getFeatures = (state) => state.get('features');
-const getShowSelectedFilter = (state) => state.get('showselectedfeatures');
+const getFeatures = (state) => state.features.get('features');
+const getShowSelectedFilter = (state) => state.features.get('showselectedfeatures');
 
 export const getVisibleFeatures = createSelector(
     [getFeatures, getShowSelectedFilter],

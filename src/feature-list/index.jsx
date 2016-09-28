@@ -7,8 +7,8 @@ import { getVisibleFeatures } from '../selectors'
 function mapStateToProps(state) {
   return { 
     features: getVisibleFeatures(state),
-    showSelectedFeatures: state.get('showselectedfeatures')
-    };
+    showSelectedFeatures: state.features.get('showselectedfeatures')
+  };
 }
 
 function mapDispatchToProps(dispatch) {

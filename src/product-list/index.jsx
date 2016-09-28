@@ -3,7 +3,7 @@ import React from 'react';
 import ProductItem from '../product-item'
 
 function mapStateToProps(state) {
-  return { products: state.get('products') };
+  return { products: state.other.get('products') };
 }
 
 function mapDispatchToProps(dispatch) {

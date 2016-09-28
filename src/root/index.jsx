@@ -10,14 +10,14 @@ import '../main.styl'
 
 function mapStateToProps(state){
   return { 
-    username:state.get('username'), 
-    page: state.get('page')
+    username: state.other.get('username'), 
+    page: state.other.get('page')
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    resetState: ()=> dispatch(resetState())
+   
   }
 }
 
@@ -30,7 +30,7 @@ function getPageComponent(page){
     case PageEnum.CLIENT:
       return <Client/>
     default:
-      return <FeatureList/>
+      return <Client/>
   }
 }
 

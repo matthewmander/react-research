@@ -6,6 +6,7 @@ export const LOAD_FROM_STORED_STATE = 'load-from-local-store';
 export const RESET_STATE = 'reset-state';
 export const SET_CURRENT_PAGE = 'set-current-page';
 export const SET_FORENAME ='set-forename';
+export const SET_SURNAME = 'set-surname';
 
 export function addDummyFeature(){
     return {
@@ -39,10 +40,17 @@ export function loadFromLocalStore(newState){
     }
 }
 
-export function onForenameChange(forename){
+export function onForenameChange(text){
     return {
         type: SET_FORENAME,
-        forename: forename
+        forename: text
+    }
+}
+
+export function onSurnameChange(text){
+    return {
+        type: SET_SURNAME,
+        text: text
     }
 }
 
@@ -57,3 +65,4 @@ export function resetState(){
         type: RESET_STATE
     }
 }
+
