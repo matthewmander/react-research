@@ -9,11 +9,11 @@ const initialState = Immutable.Map({
 });
 
 function parseState(state) {
-    return {
+    return Immutable.Map({
         forename: state.forename,
         surname: state.surname,
         age: state.age
-    }
+    })
 } 
 
 export default function client(state = initialState, action) {

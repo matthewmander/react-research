@@ -7,6 +7,8 @@ export const RESET_STATE = 'reset-state';
 export const SET_CURRENT_PAGE = 'set-current-page';
 export const SET_FORENAME ='set-forename';
 export const SET_SURNAME = 'set-surname';
+export const SET_GRAPH_DATA_1 = 'set-graph-data-1';
+export const SET_GRAPH_DATA_2 = 'set-graph-data-2';
 
 export function addDummyFeature(){
     return {
@@ -63,6 +65,18 @@ export function setCurrentPage(page){
 export function resetState(){
     return {
         type: RESET_STATE
+    }
+}
+
+export function setGraphData1(){
+    return {
+        type: SET_GRAPH_DATA_1
+    }
+}
+
+export function setGraphData2(){
+    return {
+        type: SET_GRAPH_DATA_2
     }
 }
 

@@ -4,6 +4,8 @@ import { resetState } from '../actions'
 import FeatureList from '../feature-list'
 import ProductList from '../product-list'
 import Client from '../client'
+import Graph from '../graph'
+import Graph2 from '../graph2'
 import Menu from '../menu'
 import { PageEnum } from '../enums'
 import '../main.styl'
@@ -29,6 +31,8 @@ function getPageComponent(page){
       return <ProductList/>
     case PageEnum.CLIENT:
       return <Client/>
+    case PageEnum.GRAPH:
+      return <Graph2/>
     default:
       return <Client/>
   }

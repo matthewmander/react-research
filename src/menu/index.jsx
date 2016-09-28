@@ -21,6 +21,7 @@ class Menu extends React.Component {
       <button onClick={this.props.setCurrentPage.bind(this, PageEnum.CLIENT)}>Client</button>
       <button onClick={this.props.setCurrentPage.bind(this, PageEnum.FEATURES)}>Features</button>
       <button onClick={this.props.setCurrentPage.bind(this, PageEnum.PRODUCTS)}>Products</button>
+      <button onClick={this.props.setCurrentPage.bind(this, PageEnum.GRAPH)}>Graph</button>
       <button onClick={this.props.resetState.bind(this)}>Reset Data</button>
       </div>
     );

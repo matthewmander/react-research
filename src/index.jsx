@@ -25,12 +25,12 @@ const store = createStoreWithMiddleware(rootReducer);
 
 const load = storage.createLoader(engine);
 
-/*load(store)
+load(store)
     .then((newState) => { 
       console.log('Loaded state:', newState);
       store.dispatch(loadFromLocalStore(newState))})
     .catch((ex) => console.log('Failed to load previous state' + ex));
-*/
+
 render(
   <Provider store={store}>
     <Root></Root>

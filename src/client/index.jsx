@@ -3,7 +3,6 @@ import React from 'react';
 import {onForenameChange, onSurnameChange} from '../actions'
 
 function mapStateToProps(state) {
-
   return { 
     forename: state.client.get('forename'),
     surname: state.client.get('surname')
