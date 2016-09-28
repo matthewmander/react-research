@@ -1,29 +1,52 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadInitialData} from '../actions'
+import { resetState } from '../actions'
 import FeatureList from '../feature-list'
 import ProductList from '../product-list'
+import Client from '../client'
+import Graph from '../graph'
+import Graph2 from '../graph2'
+import Menu from '../menu'
+import { PageEnum } from '../enums'
+import '../main.styl'
 
 function mapStateToProps(state){
   return { 
-    username:state.get('username'), features: state.get('features')}
+    username: state.other.get('username'), 
+    page: state.other.get('page')
+  }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    loadInitialData: (username) => dispatch(loadInitialData()),
+   
+  }
+}
+
+function getPageComponent(page){
+  switch (page) {
+    case PageEnum.FEATURES:
+      return <FeatureList/>
+    case PageEnum.PRODUCTS:
+      return <ProductList/>
+    case PageEnum.CLIENT:
+      return <Client/>
+    case PageEnum.GRAPH:
+      return <Graph2/>
+    default:
+      return <Client/>
   }
 }
 
 class App extends React.Component {
   render() {
+    var pageComponent = getPageComponent(this.props.page);
     return (
       <div>
-        <h1>Research Demo - In React</h1>
+        <h1>Research Demo - Using React and Redux</h1>
         <h2>Hello {this.props.username}</h2>
-        <button onClick={this.props.loadInitialData.bind(this, this.props.username)}>Load</button>
-        <FeatureList/>
-        <ProductList/>
+        <Menu/>
+        {pageComponent}
       </div>
     )
   }

@@ -3,7 +3,7 @@ import React from 'react';
 import ProductItem from '../product-item'
 
 function mapStateToProps(state) {
-  return { products: state.get('products') };
+  return { products: state.other.get('products') };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
 class ProductList extends React.Component {
   render() {
     var products = this.props.products.map(({text, id}) => (
-        <ProductItem text={text} id={id}/>
+        <li key={id}><ProductItem text={text} id={id}/></li>
     ));
     return (
       <div>
